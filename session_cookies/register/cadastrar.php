@@ -37,6 +37,7 @@ function checkRegister ($data, $conn) {
     }
 
     $sql = "SELECT * FROM users WHERE email = :email";
+    $select->clearCursor();
     $select = $conn->prepare($sql);
     $select->bindValue(':email', $data['email']);
 
@@ -50,7 +51,7 @@ function checkRegister ($data, $conn) {
 }
 
 function insert($data, $conn) {
-    $sqlinsert = "INSERT INTO users(name, email, password created_at, updated_at) VALUES ( :name, :email, :password, now(), now() )";
+    $sqlinsert = "INSERT INTO users(name, email, password, created_at, updated_at) VALUES ( :name, :email, :password, now(), now() )";
     $secret = "XahsjsAAA374745SSDD";
 
     $insert = $conn->prepare($sqlinsert);
